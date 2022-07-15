@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>pydeck</title>
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <script src='https://cdn.jsdelivr.net/npm/@deck.gl/jupyter-widget@~8.5.*/dist/index.js'></script>
+    <style>
+    body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#deck-map-container {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+#map {
+  pointer-events: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+}
+
+#deckgl-overlay {
+  z-index: 2;
+  background: none;
+}
+
+#deck-map-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+#deck-container {
+  width: 100vw;
+  height: 100vh;
+}
+    </style>
+  </head>
+  <body>
+    <div id="deck-container">
+    </div>
+  </body>
+  <script>
+    const jsonInput = {"initialViewState": {"bearing": 0, "latitude": 47.5, "longitude": 19.040236, "pitch": 35, "zoom": 10}, "layers": [{"@@type": "H3HexagonLayer", "autoHighlight": true, "coverage": 0.8, "data": [{"l6": "861e020dfffffff", "price": 1219298.0}, {"l6": "861e02687ffffff", "price": 1200000.0}, {"l6": "861e030f7ffffff", "price": 1508301.0}, {"l6": "861e03137ffffff", "price": 949495.0}, {"l6": "861e0344fffffff", "price": 1149972.254237288}, {"l6": "861e0345fffffff", "price": 1071476.28125}, {"l6": "861e034cfffffff", "price": 941509.0}, {"l6": "861e03607ffffff", "price": 815503.8828828828}, {"l6": "861e0360fffffff", "price": 811079.3561643836}, {"l6": "861e03617ffffff", "price": 724351.2053571428}, {"l6": "861e0361fffffff", "price": 873468.2307692308}, {"l6": "861e03627ffffff", "price": 827928.7468354431}, {"l6": "861e0362fffffff", "price": 665250.12}, {"l6": "861e03637ffffff", "price": 848913.6625766872}, {"l6": "861e036a7ffffff", "price": 754474.7548076923}, {"l6": "861e036afffffff", "price": 734256.0784313725}, {"l6": "861e036b7ffffff", "price": 644444.0}, {"l6": "861e03707ffffff", "price": 754078.8571428572}, {"l6": "861e03717ffffff", "price": 1038988.886138614}, {"l6": "861e0371fffffff", "price": 804236.3149606299}, {"l6": "861e03737ffffff", "price": 954608.153846154}, {"l6": "861e03747ffffff", "price": 499819.6666666667}, {"l6": "861e03787ffffff", "price": 1198564.9321824908}, {"l6": "861e0378fffffff", "price": 877265.4748490945}, {"l6": "861e03797ffffff", "price": 686922.0714285715}, {"l6": "861e0379fffffff", "price": 975012.7772277228}, {"l6": "861e037a7ffffff", "price": 1222658.5652173914}, {"l6": "861e037afffffff", "price": 1059925.3822075785}, {"l6": "861e037b7ffffff", "price": 1229496.0}, {"l6": "861e08997ffffff", "price": 831125.4285714285}, {"l6": "861e0a8f7ffffff", "price": 881666.5}, {"l6": "861e0a967ffffff", "price": 726667.8571428572}, {"l6": "861e0e19fffffff", "price": 3382335.0}, {"l6": "861e0e6d7ffffff", "price": 970297.0}, {"l6": "861e110efffffff", "price": 883903.5}, {"l6": "861e11217ffffff", "price": 876789.125}, {"l6": "861e11657ffffff", "price": 708297.25}, {"l6": "861e18cdfffffff", "price": 905356.4285714284}, {"l6": "861e19c27ffffff", "price": 600000.0}, {"l6": "861e1c8cfffffff", "price": 988268.8}, {"l6": "861e1cb5fffffff", "price": 835209.8}, {"l6": "861e1cb6fffffff", "price": 806536.304347826}, {"l6": "861e1cc5fffffff", "price": 768126.0}, {"l6": "861e1cc77ffffff", "price": 917369.0}, {"l6": "861e1d19fffffff", "price": 1308560.6}, {"l6": "861e1eb17ffffff", "price": 971174.2857142856}], "extruded": true, "getFillColor": "@@=[255 - (price/10000), 255, (price/10000)]", "getHexagon": "@@=l6", "id": "0ffddd43-75e9-4664-a2b5-fa4e9e3e3944", "opacity": 0.01, "pickable": true}], "mapProvider": "carto", "mapStyle": "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json", "views": [{"@@type": "MapView", "controller": true}]};
+    const tooltip = {'text': 'square meter price: {price}'};
+    const customLibraries = null;
+
+    const deckInstance = createDeck({
+                  container: document.getElementById('deck-container'),
+      jsonInput,
+      tooltip,
+      customLibraries
+    });
+
+  </script>
+</html>
